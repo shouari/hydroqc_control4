@@ -1,2 +1,29 @@
-/.venv
-/__pycache__
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Environment variables
+.env
+.env.*
+
+# Logs
+*.log
+
+# Temporary files
+temp_*
+*.tmp
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
