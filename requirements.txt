@@ -1,0 +1,4 @@
+fastapi
+uvicorn[standard]
+Hydro-Quebec-API-Wrapper
+python-dotenv

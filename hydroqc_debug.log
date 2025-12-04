@@ -1,0 +1,14 @@
+2025-12-04 13:24:28,879 - app - INFO - Attempting login for user: your_email@example.com
+2025-12-04 13:24:28,879 - app - ERROR - Login failed: WebUser.__init__() missing 1 required keyword-only argument: 'verify_ssl'
+Traceback (most recent call last):
+  File "D:\Codes\hydroqc_control4\app.py", line 75, in get_webuser
+    _webuser_client = WebUser(HYDRO_USERNAME, HYDRO_PASSWORD)
+TypeError: WebUser.__init__() missing 1 required keyword-only argument: 'verify_ssl'
+2025-12-04 13:27:05,621 - app - INFO - Attempting login for user: your_email@example.com
+2025-12-04 13:27:05,622 - hydroqc.httpclient - INFO - Login using your_email@example.com
+2025-12-04 13:27:05,997 - hydroqc.httpclient - ERROR - Login error - Les informations de connexion que vous avez fournies sont incorrectes. Veuillez vérifier votre adresse courriel et votre mot de passe.
+2025-12-04 13:27:06,002 - app - INFO - Login successful
+2025-12-04 14:01:37,736 - app - INFO - Attempting login for user: salim.houari@hotmail.com
+2025-12-04 14:01:37,737 - hydroqc.httpclient - INFO - Login using salim.houari@hotmail.com
+2025-12-04 14:01:39,415 - hydroqc.httpclient - INFO - Login completed using salim.houari@hotmail.com
+2025-12-04 14:01:39,415 - app - INFO - Login successful
