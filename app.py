@@ -402,10 +402,31 @@ async def get_control4_test():
     start_str = "2025-12-05T17:00:00"
     end_str = "2025-12-05T21:00:00"
     
+    # Calculate minutes
+    now = datetime.now()
+    try:
+        start_dt = datetime.fromisoformat(start_str)
+        end_dt = datetime.fromisoformat(end_str)
+        
+        # Calculate differences in minutes
+        # usage in Control4:
+        # if minutes_until_start <= 120 (2 hours): Action
+        # if minutes_to_end <= 0: Action
+        
+        minutes_until_start = int((start_dt - now).total_seconds() / 60)
+        minutes_to_end = int((end_dt - now).total_seconds() / 60)
+        
+    except ValueError:
+        # Fallback if parsing fails
+        minutes_until_start = 9999
+        minutes_to_end = 9999
+
     return {
         "ispeak": True,
         "start": start_str,
         "end": end_str,
+        "minutes_until_start": minutes_until_start,
+        "minutes_to_end": minutes_to_end,
         "state": "normal"
     }
 
