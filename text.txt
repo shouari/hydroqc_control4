@@ -1,0 +1,48 @@
+This clarifies a lot! You want a "Boutique SaaS" or "Service Provider" model.
+
+You envision a flow like this:
+
+User visits your website (e.g., my-hydro-bridge.com).
+User enters Hydro-Quebec Credentials into a secure form on your site.
+Your system validates them and generates a Unique URL (e.g., .../api/u/user123/peak-status).
+User copies that URL and pastes it into Control4.
+User never touches Docker, Python, or config files.
+Here is the architectural design for that:
+
+1. The Database (The "Ledger")
+You need a persistent database (SQLite for small scale, PostgreSQL for production) to store:
+
+User ID: A generated unique ID (UUID).
+Encrypted Credentials: The Hydro username/password (must be encrypted at rest!).
+API Token: A secret key associated with that user.
+2. The Login/Registration Portal
+A simple frontend (HTML/JS) served by FastAPI:
+
+Page 1: "Enter your Hydro Quebec Credentials".
+Action: POST request to your backend. The backend tries to log in to HQ immediately to verify validity.
+Success: Backend creates a database entry and displays: "Success! Here is your personal API Link: https://.../api/u/UUID1234/peak-status?key=SECRET".
+3. The Backend "Refactory" (Dynamic Session Management)
+This is the biggest technical change. The 
+app.py
+ cannot assume one user anymore. It needs to be Request-Driven.
+
+Current Flow (Static): GET /api/peak-status -> Uses global _webuser_client -> returns data.
+New Flow (Dynamic): GET /api/u/{user_id}/peak-status ->
+Look up user_id in DB.
+Decrypt stored credentials.
+Check if we have an active session in memory for this user.
+Yes: Use it.
+No: Create new WebUser instance, log in, perform request, cache the session.
+Return user-specific data.
+4. The "Quebec Problem" (IP Ban Evasion)
+This remains the biggest hurdle. If you have 50 users, your server will make 50 login requests to Hydro-Quebec every 10 minutes (refresh interval).
+
+50 requests / 10 mins from one IP might get flagged as a botnet attack.
+Solution: You will arguably need to route these requests through a rotating residential proxy service (like Bright Data or IPRoyal) so HQ sees the traffic coming from different places, not just your single server.
+Summary of Next Steps (If you choose this path):
+Add Database: Integrate sqlite + SQLAlchemy or Tortoise-ORM.
+Add Encryption: Use cryptography library to secure stored passwords.
+Refactor App: Convert Global Variables -> User Session Dictionary.
+Create Frontend: A simple "Get My Link" page.
+This turns your project into a real product!
+
