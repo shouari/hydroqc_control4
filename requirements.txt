@@ -1,4 +1,4 @@
-fastapi
-uvicorn[standard]
-Hydro-Quebec-API-Wrapper
-python-dotenv
+fastapi>=0.100.0
+uvicorn>=0.20.0
+python-dotenv>=1.0.0
+hydroqc>=1.0.0

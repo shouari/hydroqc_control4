@@ -1,0 +1,117 @@
+2025-12-04 21:22:01,922 - hydroqc.httpclient - INFO - Login using salim.houari@hotmail.com
+2025-12-04 21:22:03,450 - hydroqc.httpclient - INFO - Login completed using salim.houari@hotmail.com
+2025-12-04 21:22:03,453 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientget_user_info(<hydroqc.hydro_api.client.HydroClient object at 0x000002825333DA90>,)[] False (0.0000)s
+2025-12-04 21:22:03,453 - hydroqc.httpclient - INFO - Fetching webuser info
+2025-12-04 21:22:04,358 - aiocache.base - DEBUG - SET hydroqc.hydro_api.clientget_user_info(<hydroqc.hydro_api.client.HydroClient object at 0x000002825333DA90>,)[] 1 (0.0000)s
+2025-12-04 21:22:04,360 - hydroqc.w-AANF68253 - INFO - Creating new customer 0111343405
+2025-12-04 21:22:04,361 - hydroqc.w-AANF68253 - DEBUG - Got webuser info
+2025-12-04 21:22:04,367 - hydroqc.w-0111343405.c-0111343405 - DEBUG - Getting customer info
+2025-12-04 21:22:04,368 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientget_customer_info(<hydroqc.hydro_api.client.HydroClient object at 0x000002825333DA90>, '0111343405', '0111343405')[] False (0.0000)s
+2025-12-04 21:22:04,368 - hydroqc.httpclient - INFO - Fetching customer info: c-0111343405
+2025-12-04 21:22:05,351 - aiocache.base - DEBUG - SET hydroqc.hydro_api.clientget_customer_info(<hydroqc.hydro_api.client.HydroClient object at 0x000002825333DA90>, '0111343405', '0111343405')[] 1 (0.0000)s
+2025-12-04 21:22:05,352 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientlist_account_contract(<hydroqc.hydro_api.client.HydroClient object at 0x000002825333DA90>, '0111343405', '0111343405')[] False (0.0000)s
+2025-12-04 21:22:05,393 - aiocache.base - DEBUG - SET hydroqc.hydro_api.clientlist_account_contract(<hydroqc.hydro_api.client.HydroClient object at 0x000002825333DA90>, '0111343405', '0111343405')[] 1 (0.0000)s
+2025-12-04 21:22:05,393 - hydroqc.w-0111343405.c-0111343405 - INFO - Creating new account 299114757923
+2025-12-04 21:22:05,394 - hydroqc.w-0111343405.c-0111343405.a-299114757923 - DEBUG - Getting account info
+2025-12-04 21:22:05,394 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientget_account_info(<hydroqc.hydro_api.client.HydroClient object at 0x000002825333DA90>, '0111343405', '0111343405', '299114757923')[] False (0.0000)s
+2025-12-04 21:22:05,394 - hydroqc.httpclient - INFO - Fetching account info: c-0111343405 - a-299114757923
+2025-12-04 21:22:05,394 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientget_customer_info(<hydroqc.hydro_api.client.HydroClient object at 0x000002825333DA90>, '0111343405', '0111343405')[] True (0.0000)s
+2025-12-04 21:22:05,394 - aiocache.base - DEBUG - SET hydroqc.hydro_api.clientget_account_info(<hydroqc.hydro_api.client.HydroClient object at 0x000002825333DA90>, '0111343405', '0111343405', '299114757923')[] 1 (0.0000)s
+2025-12-04 21:22:05,394 - hydroqc.w-0111343405.c-0111343405.a-299114757923 - DEBUG - Got account info
+2025-12-04 21:22:05,395 - hydroqc.w-0111343405.c-0111343405.a-299114757923 - INFO - Get contract info
+2025-12-04 21:22:05,395 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientget_contract_info(<hydroqc.hydro_api.client.HydroClient object at 0x000002825333DA90>, '0111343405', '0111343405', '299114757923', '0316240473')[] False (0.0000)s
+2025-12-04 21:22:05,395 - hydroqc.httpclient - INFO - Fetching contract info: c-0111343405 - a-0111343405 - c-0316240473
+2025-12-04 21:22:05,907 - aiocache.base - DEBUG - SET hydroqc.hydro_api.clientget_contract_info(<hydroqc.hydro_api.client.HydroClient object at 0x000002825333DA90>, '0111343405', '0111343405', '299114757923', '0316240473')[] 1 (0.0000)s
+2025-12-04 21:22:05,907 - hydroqc.w-0111343405.c-0111343405 - INFO - Creating new contracts 0316240473
+2025-12-04 21:22:05,908 - hydroqc.w-0111343405.c-0111343405.a-299114757923.c-0316240473 - DEBUG - Getting contract info
+2025-12-04 21:22:05,908 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientget_contract_info(<hydroqc.hydro_api.client.HydroClient object at 0x000002825333DA90>, '0111343405', '0111343405', '299114757923', '0316240473')[] True (0.0000)s
+2025-12-04 21:22:05,908 - hydroqc.w-0111343405.c-0111343405.a-299114757923.c-0316240473 - DEBUG - Got contract info
+2025-12-04 21:22:05,908 - hydroqc.w-0111343405.c-0111343405 - DEBUG - Got customer info
+2025-12-04 21:22:05,911 - hydroqc.w-0111343405.c-0111343405.a-299114757923.c-0316240473.wch - DEBUG - Fetching data from HydroQuebec...
+2025-12-04 21:22:05,911 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientget_cpc_credit(<hydroqc.hydro_api.client.HydroClient object at 0x000002825333DA90>, '0111343405', '0111343405', '0316240473')[] False (0.0000)s
+2025-12-04 21:22:05,911 - hydroqc.httpclient - INFO - Fetching cpc: c-0111343405 c-0316240473
+2025-12-04 21:22:08,501 - aiocache.base - DEBUG - SET hydroqc.hydro_api.clientget_cpc_credit(<hydroqc.hydro_api.client.HydroClient object at 0x000002825333DA90>, '0111343405', '0111343405', '0316240473')[] 1 (0.0000)s
+2025-12-04 21:22:08,502 - hydroqc.w-0111343405.c-0111343405.a-299114757923.c-0316240473.wch - DEBUG - Data fetched from HydroQuebec...
+2025-12-04 21:31:38,393 - hydroqc.httpclient - INFO - Login using salim.houari@hotmail.com
+2025-12-04 21:31:40,168 - hydroqc.httpclient - INFO - Login completed using salim.houari@hotmail.com
+2025-12-04 21:31:40,172 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientget_user_info(<hydroqc.hydro_api.client.HydroClient object at 0x0000018F6BF11A90>,)[] False (0.0000)s
+2025-12-04 21:31:40,172 - hydroqc.httpclient - INFO - Fetching webuser info
+2025-12-04 21:31:40,568 - aiocache.base - DEBUG - SET hydroqc.hydro_api.clientget_user_info(<hydroqc.hydro_api.client.HydroClient object at 0x0000018F6BF11A90>,)[] 1 (0.0000)s
+2025-12-04 21:31:40,569 - hydroqc.w-AANF68253 - INFO - Creating new customer 0111343405
+2025-12-04 21:31:40,569 - hydroqc.w-AANF68253 - DEBUG - Got webuser info
+2025-12-04 21:31:40,572 - hydroqc.w-0111343405.c-0111343405 - DEBUG - Getting customer info
+2025-12-04 21:31:40,572 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientget_customer_info(<hydroqc.hydro_api.client.HydroClient object at 0x0000018F6BF11A90>, '0111343405', '0111343405')[] False (0.0000)s
+2025-12-04 21:31:40,572 - hydroqc.httpclient - INFO - Fetching customer info: c-0111343405
+2025-12-04 21:31:40,753 - aiocache.base - DEBUG - SET hydroqc.hydro_api.clientget_customer_info(<hydroqc.hydro_api.client.HydroClient object at 0x0000018F6BF11A90>, '0111343405', '0111343405')[] 1 (0.0000)s
+2025-12-04 21:31:40,754 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientlist_account_contract(<hydroqc.hydro_api.client.HydroClient object at 0x0000018F6BF11A90>, '0111343405', '0111343405')[] False (0.0000)s
+2025-12-04 21:31:40,796 - aiocache.base - DEBUG - SET hydroqc.hydro_api.clientlist_account_contract(<hydroqc.hydro_api.client.HydroClient object at 0x0000018F6BF11A90>, '0111343405', '0111343405')[] 1 (0.0000)s
+2025-12-04 21:31:40,797 - hydroqc.w-0111343405.c-0111343405 - INFO - Creating new account 299114757923
+2025-12-04 21:31:40,797 - hydroqc.w-0111343405.c-0111343405.a-299114757923 - DEBUG - Getting account info
+2025-12-04 21:31:40,797 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientget_account_info(<hydroqc.hydro_api.client.HydroClient object at 0x0000018F6BF11A90>, '0111343405', '0111343405', '299114757923')[] False (0.0000)s
+2025-12-04 21:31:40,797 - hydroqc.httpclient - INFO - Fetching account info: c-0111343405 - a-299114757923
+2025-12-04 21:31:40,797 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientget_customer_info(<hydroqc.hydro_api.client.HydroClient object at 0x0000018F6BF11A90>, '0111343405', '0111343405')[] True (0.0000)s
+2025-12-04 21:31:40,798 - aiocache.base - DEBUG - SET hydroqc.hydro_api.clientget_account_info(<hydroqc.hydro_api.client.HydroClient object at 0x0000018F6BF11A90>, '0111343405', '0111343405', '299114757923')[] 1 (0.0000)s
+2025-12-04 21:31:40,798 - hydroqc.w-0111343405.c-0111343405.a-299114757923 - DEBUG - Got account info
+2025-12-04 21:31:40,798 - hydroqc.w-0111343405.c-0111343405.a-299114757923 - INFO - Get contract info
+2025-12-04 21:31:40,798 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientget_contract_info(<hydroqc.hydro_api.client.HydroClient object at 0x0000018F6BF11A90>, '0111343405', '0111343405', '299114757923', '0316240473')[] False (0.0000)s
+2025-12-04 21:31:40,798 - hydroqc.httpclient - INFO - Fetching contract info: c-0111343405 - a-0111343405 - c-0316240473
+2025-12-04 21:31:40,836 - aiocache.base - DEBUG - SET hydroqc.hydro_api.clientget_contract_info(<hydroqc.hydro_api.client.HydroClient object at 0x0000018F6BF11A90>, '0111343405', '0111343405', '299114757923', '0316240473')[] 1 (0.0000)s
+2025-12-04 21:31:40,836 - hydroqc.w-0111343405.c-0111343405 - INFO - Creating new contracts 0316240473
+2025-12-04 21:31:40,837 - hydroqc.w-0111343405.c-0111343405.a-299114757923.c-0316240473 - DEBUG - Getting contract info
+2025-12-04 21:31:40,837 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientget_contract_info(<hydroqc.hydro_api.client.HydroClient object at 0x0000018F6BF11A90>, '0111343405', '0111343405', '299114757923', '0316240473')[] True (0.0000)s
+2025-12-04 21:31:40,837 - hydroqc.w-0111343405.c-0111343405.a-299114757923.c-0316240473 - DEBUG - Got contract info
+2025-12-04 21:31:40,837 - hydroqc.w-0111343405.c-0111343405 - DEBUG - Got customer info
+2025-12-04 21:31:40,840 - hydroqc.w-0111343405.c-0111343405.a-299114757923.c-0316240473.wch - DEBUG - Fetching data from HydroQuebec...
+2025-12-04 21:31:40,840 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientget_cpc_credit(<hydroqc.hydro_api.client.HydroClient object at 0x0000018F6BF11A90>, '0111343405', '0111343405', '0316240473')[] False (0.0000)s
+2025-12-04 21:31:40,841 - hydroqc.httpclient - INFO - Fetching cpc: c-0111343405 c-0316240473
+2025-12-04 21:31:43,954 - aiocache.base - DEBUG - SET hydroqc.hydro_api.clientget_cpc_credit(<hydroqc.hydro_api.client.HydroClient object at 0x0000018F6BF11A90>, '0111343405', '0111343405', '0316240473')[] 1 (0.0000)s
+2025-12-04 21:31:43,954 - hydroqc.w-0111343405.c-0111343405.a-299114757923.c-0316240473.wch - DEBUG - Data fetched from HydroQuebec...
+2025-12-04 21:35:36,422 - hydroqc.httpclient - INFO - Login using salim.houari@hotmail.com
+2025-12-04 21:35:37,901 - hydroqc.httpclient - INFO - Login completed using salim.houari@hotmail.com
+2025-12-04 21:35:37,907 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientget_user_info(<hydroqc.hydro_api.client.HydroClient object at 0x000002E508815BE0>,)[] False (0.0000)s
+2025-12-04 21:35:37,908 - hydroqc.httpclient - INFO - Fetching webuser info
+2025-12-04 21:35:38,422 - aiocache.base - DEBUG - SET hydroqc.hydro_api.clientget_user_info(<hydroqc.hydro_api.client.HydroClient object at 0x000002E508815BE0>,)[] 1 (0.0000)s
+2025-12-04 21:35:38,423 - hydroqc.w-AANF68253 - INFO - Creating new customer 0111343405
+2025-12-04 21:35:38,423 - hydroqc.w-AANF68253 - DEBUG - Got webuser info
+2025-12-04 21:35:38,425 - hydroqc.w-0111343405.c-0111343405 - DEBUG - Getting customer info
+2025-12-04 21:35:38,426 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientget_customer_info(<hydroqc.hydro_api.client.HydroClient object at 0x000002E508815BE0>, '0111343405', '0111343405')[] False (0.0000)s
+2025-12-04 21:35:38,426 - hydroqc.httpclient - INFO - Fetching customer info: c-0111343405
+2025-12-04 21:35:39,658 - aiocache.base - DEBUG - SET hydroqc.hydro_api.clientget_customer_info(<hydroqc.hydro_api.client.HydroClient object at 0x000002E508815BE0>, '0111343405', '0111343405')[] 1 (0.0000)s
+2025-12-04 21:35:39,658 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientlist_account_contract(<hydroqc.hydro_api.client.HydroClient object at 0x000002E508815BE0>, '0111343405', '0111343405')[] False (0.0000)s
+2025-12-04 21:35:39,698 - aiocache.base - DEBUG - SET hydroqc.hydro_api.clientlist_account_contract(<hydroqc.hydro_api.client.HydroClient object at 0x000002E508815BE0>, '0111343405', '0111343405')[] 1 (0.0000)s
+2025-12-04 21:35:39,698 - hydroqc.w-0111343405.c-0111343405 - INFO - Creating new account 299114757923
+2025-12-04 21:35:39,698 - hydroqc.w-0111343405.c-0111343405.a-299114757923 - DEBUG - Getting account info
+2025-12-04 21:35:39,698 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientget_account_info(<hydroqc.hydro_api.client.HydroClient object at 0x000002E508815BE0>, '0111343405', '0111343405', '299114757923')[] False (0.0000)s
+2025-12-04 21:35:39,699 - hydroqc.httpclient - INFO - Fetching account info: c-0111343405 - a-299114757923
+2025-12-04 21:35:39,699 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientget_customer_info(<hydroqc.hydro_api.client.HydroClient object at 0x000002E508815BE0>, '0111343405', '0111343405')[] True (0.0000)s
+2025-12-04 21:35:39,699 - aiocache.base - DEBUG - SET hydroqc.hydro_api.clientget_account_info(<hydroqc.hydro_api.client.HydroClient object at 0x000002E508815BE0>, '0111343405', '0111343405', '299114757923')[] 1 (0.0000)s
+2025-12-04 21:35:39,700 - hydroqc.w-0111343405.c-0111343405.a-299114757923 - DEBUG - Got account info
+2025-12-04 21:35:39,700 - hydroqc.w-0111343405.c-0111343405.a-299114757923 - INFO - Get contract info
+2025-12-04 21:35:39,700 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientget_contract_info(<hydroqc.hydro_api.client.HydroClient object at 0x000002E508815BE0>, '0111343405', '0111343405', '299114757923', '0316240473')[] False (0.0000)s
+2025-12-04 21:35:39,700 - hydroqc.httpclient - INFO - Fetching contract info: c-0111343405 - a-0111343405 - c-0316240473
+2025-12-04 21:35:40,163 - aiocache.base - DEBUG - SET hydroqc.hydro_api.clientget_contract_info(<hydroqc.hydro_api.client.HydroClient object at 0x000002E508815BE0>, '0111343405', '0111343405', '299114757923', '0316240473')[] 1 (0.0000)s
+2025-12-04 21:35:40,163 - hydroqc.w-0111343405.c-0111343405 - INFO - Creating new contracts 0316240473
+2025-12-04 21:35:40,163 - hydroqc.w-0111343405.c-0111343405.a-299114757923.c-0316240473 - DEBUG - Getting contract info
+2025-12-04 21:35:40,164 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientget_contract_info(<hydroqc.hydro_api.client.HydroClient object at 0x000002E508815BE0>, '0111343405', '0111343405', '299114757923', '0316240473')[] True (0.0000)s
+2025-12-04 21:35:40,164 - hydroqc.w-0111343405.c-0111343405.a-299114757923.c-0316240473 - DEBUG - Got contract info
+2025-12-04 21:35:40,164 - hydroqc.w-0111343405.c-0111343405 - DEBUG - Got customer info
+2025-12-04 21:35:40,166 - hydroqc.w-0111343405.c-0111343405.a-299114757923.c-0316240473.wch - DEBUG - Fetching data from HydroQuebec...
+2025-12-04 21:35:40,166 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientget_cpc_credit(<hydroqc.hydro_api.client.HydroClient object at 0x000002E508815BE0>, '0111343405', '0111343405', '0316240473')[] False (0.0000)s
+2025-12-04 21:35:40,166 - hydroqc.httpclient - INFO - Fetching cpc: c-0111343405 c-0316240473
+2025-12-04 21:35:42,812 - aiocache.base - DEBUG - SET hydroqc.hydro_api.clientget_cpc_credit(<hydroqc.hydro_api.client.HydroClient object at 0x000002E508815BE0>, '0111343405', '0111343405', '0316240473')[] 1 (0.0000)s
+2025-12-04 21:35:42,812 - hydroqc.w-0111343405.c-0111343405.a-299114757923.c-0316240473.wch - DEBUG - Data fetched from HydroQuebec...
+2025-12-04 21:45:42,869 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientget_user_info(<hydroqc.hydro_api.client.HydroClient object at 0x000002E508815BE0>,)[] True (0.0000)s
+2025-12-04 21:45:42,869 - hydroqc.w-AANF68253 - DEBUG - Got webuser info
+2025-12-04 21:45:42,870 - hydroqc.w-0111343405.c-0111343405 - DEBUG - Getting customer info
+2025-12-04 21:45:42,871 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientget_customer_info(<hydroqc.hydro_api.client.HydroClient object at 0x000002E508815BE0>, '0111343405', '0111343405')[] True (0.0000)s
+2025-12-04 21:45:42,871 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientlist_account_contract(<hydroqc.hydro_api.client.HydroClient object at 0x000002E508815BE0>, '0111343405', '0111343405')[] True (0.0000)s
+2025-12-04 21:45:42,871 - hydroqc.w-0111343405.c-0111343405.a-299114757923 - DEBUG - Getting account info
+2025-12-04 21:45:42,871 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientget_account_info(<hydroqc.hydro_api.client.HydroClient object at 0x000002E508815BE0>, '0111343405', '0111343405', '299114757923')[] True (0.0000)s
+2025-12-04 21:45:42,871 - hydroqc.w-0111343405.c-0111343405.a-299114757923 - DEBUG - Got account info
+2025-12-04 21:45:42,871 - hydroqc.w-0111343405.c-0111343405.a-299114757923.c-0316240473 - DEBUG - Getting contract info
+2025-12-04 21:45:42,871 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientget_contract_info(<hydroqc.hydro_api.client.HydroClient object at 0x000002E508815BE0>, '0111343405', '0111343405', '299114757923', '0316240473')[] True (0.0000)s
+2025-12-04 21:45:42,871 - hydroqc.w-0111343405.c-0111343405.a-299114757923.c-0316240473 - DEBUG - Got contract info
+2025-12-04 21:45:42,872 - hydroqc.w-0111343405.c-0111343405 - DEBUG - Got customer info
+2025-12-04 21:45:42,873 - hydroqc.w-0111343405.c-0111343405.a-299114757923.c-0316240473.wch - DEBUG - Fetching data from HydroQuebec...
+2025-12-04 21:45:42,874 - aiocache.base - DEBUG - GET hydroqc.hydro_api.clientget_cpc_credit(<hydroqc.hydro_api.client.HydroClient object at 0x000002E508815BE0>, '0111343405', '0111343405', '0316240473')[] True (0.0000)s
+2025-12-04 21:45:42,874 - hydroqc.w-0111343405.c-0111343405.a-299114757923.c-0316240473.wch - DEBUG - Data fetched from HydroQuebec...
