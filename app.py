@@ -11,12 +11,13 @@ import os
 import logging
 import asyncio
 from typing import Optional, Dict, Any, List
-from datetime import datetime
+from datetime import datetime, timedelta
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, HTTPException, status
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, PlainTextResponse
 from dotenv import load_dotenv
+import httpx
 
 from hydroqc.webuser import WebUser
 from hydroqc.customer import Customer
@@ -343,6 +344,70 @@ async def get_peak_events():
         logger.warning("⚠️ Cache not yet initialized, returning empty peak events / Cache pas encore initialisé, retour d'événements de pointe vides")
     
     return _data_cache.peak_events
+
+
+@app.get("/api/control4/peak-status")
+async def get_control4_peak_status():
+    """
+    Get simplified peak event status for Control4 integration
+    Returns only the peak event data without customer/account/contract IDs
+    IMPORTANT: Never returns null values - uses empty strings instead for Control4 compatibility
+    
+    Obtenir le statut simplifié des événements de pointe pour l'intégration Control4
+    Retourne uniquement les données d'événement de pointe sans les IDs client/compte/contrat
+    """
+    if not _data_cache.initialized:
+        logger.warning("⚠️ Cache not yet initialized / Cache pas encore initialisé")
+        return {
+            "ispeak": False,
+            "start": "",
+            "end": "",
+            "state": "unknown"
+        }
+    
+    # Return the first peak event if available, otherwise return default values
+    # Retourner le premier événement de pointe si disponible, sinon retourner les valeurs par défaut
+    if _data_cache.peak_events and len(_data_cache.peak_events) > 0:
+        first_event = _data_cache.peak_events[0]
+        # Convert None to empty string for Control4 compatibility
+        start_val = first_event.get("start")
+        end_val = first_event.get("end")
+        return {
+            "ispeak": first_event.get("ispeak", False),
+            "start": start_val if start_val is not None else "",
+            "end": end_val if end_val is not None else "",
+            "state": first_event.get("state", "unknown")
+        }
+    
+    # No peak events found / Aucun événement de pointe trouvé
+    return {
+        "ispeak": False,
+        "start": "",
+        "end": "",
+        "state": "normal"
+    }
+
+
+@app.get("/api/control4/test")
+async def get_control4_test():
+    """
+    Hardcoded test endpoint for Control4.
+    Modify these values to test different scenarios.
+    """
+    # Example dates (ISO format)
+    # start = datetime.now().isoformat()
+    # end = (datetime.now() + timedelta(hours=3)).isoformat()
+    
+    # Example dates (ISO format) - hardcoded for testing
+    start_str = "2025-12-05T17:00:00"
+    end_str = "2025-12-05T21:00:00"
+    
+    return {
+        "ispeak": True,
+        "start": start_str,
+        "end": end_str,
+        "state": "normal"
+    }
 
 
 @app.get("/api/customers")
