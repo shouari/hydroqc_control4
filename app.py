@@ -14,8 +14,9 @@ from typing import Optional, Dict, Any, List
 from datetime import datetime, timedelta
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, HTTPException, status
-from fastapi.responses import JSONResponse, PlainTextResponse
+from fastapi import FastAPI, HTTPException, status, Request
+from fastapi.responses import JSONResponse, PlainTextResponse, HTMLResponse
+from pydantic import BaseModel
 from dotenv import load_dotenv
 import httpx
 
@@ -372,10 +373,32 @@ async def get_control4_peak_status():
         # Convert None to empty string for Control4 compatibility
         start_val = first_event.get("start")
         end_val = first_event.get("end")
+        
+        # Calculate minutes
+        minutes_until_start = None
+        minutes_to_end = None
+        now = datetime.now()
+        
+        if start_val:
+            try:
+                start_dt = datetime.fromisoformat(start_val)
+                minutes_until_start = int((start_dt - now).total_seconds() / 60)
+            except (ValueError, TypeError):
+                pass
+                
+        if end_val:
+            try:
+                end_dt = datetime.fromisoformat(end_val)
+                minutes_to_end = int((end_dt - now).total_seconds() / 60)
+            except (ValueError, TypeError):
+                pass
+        
         return {
             "ispeak": first_event.get("ispeak", False),
             "start": start_val if start_val is not None else "",
             "end": end_val if end_val is not None else "",
+            "minutes_until_start": minutes_until_start,
+            "minutes_to_end": minutes_to_end,
             "state": first_event.get("state", "unknown")
         }
     
@@ -384,51 +407,136 @@ async def get_control4_peak_status():
         "ispeak": False,
         "start": "",
         "end": "",
+        "minutes_until_start": None,
+        "minutes_to_end": None,
         "state": "normal"
     }
 
+
+# Test Data Configuration
+class TestConfig(BaseModel):
+    ispeak: bool = True
+    start: str = "2025-12-05T17:00:00"
+    end: str = "2025-12-05T21:00:00"
+    state: str = "normal"
+
+_test_config = TestConfig()
 
 @app.get("/api/control4/test")
 async def get_control4_test():
     """
-    Hardcoded test endpoint for Control4.
-    Modify these values to test different scenarios.
+    Dynamic test endpoint using configurable values.
     """
-    # Example dates (ISO format)
-    # start = datetime.now().isoformat()
-    # end = (datetime.now() + timedelta(hours=3)).isoformat()
-    
-    # Example dates (ISO format) - hardcoded for testing
-    start_str = "2025-12-05T17:00:00"
-    end_str = "2025-12-05T21:00:00"
-    
     # Calculate minutes
     now = datetime.now()
+    minutes_until_start = None
+    minutes_to_end = None
+    
     try:
-        start_dt = datetime.fromisoformat(start_str)
-        end_dt = datetime.fromisoformat(end_str)
-        
-        # Calculate differences in minutes
-        # usage in Control4:
-        # if minutes_until_start <= 120 (2 hours): Action
-        # if minutes_to_end <= 0: Action
-        
-        minutes_until_start = int((start_dt - now).total_seconds() / 60)
-        minutes_to_end = int((end_dt - now).total_seconds() / 60)
+        if _test_config.start:
+            start_dt = datetime.fromisoformat(_test_config.start)
+            minutes_until_start = int((start_dt - now).total_seconds() / 60)
+            
+        if _test_config.end:
+            end_dt = datetime.fromisoformat(_test_config.end)
+            minutes_to_end = int((end_dt - now).total_seconds() / 60)
         
     except ValueError:
-        # Fallback if parsing fails
-        minutes_until_start = 9999
-        minutes_to_end = 9999
+        pass
 
     return {
-        "ispeak": True,
-        "start": start_str,
-        "end": end_str,
+        "ispeak": _test_config.ispeak,
+        "start": _test_config.start,
+        "end": _test_config.end,
         "minutes_until_start": minutes_until_start,
         "minutes_to_end": minutes_to_end,
-        "state": "normal"
+        "state": _test_config.state
     }
+
+@app.post("/api/control4/test/update")
+async def update_test_data(config: TestConfig):
+    global _test_config
+    _test_config = config
+    return {"status": "updated", "config": _test_config}
+
+@app.get("/test-interface", response_class=HTMLResponse)
+async def test_interface():
+    html_content = f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Control4 API Test Interface</title>
+        <style>
+            body {{ font-family: sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; }}
+            .form-group {{ margin-bottom: 15px; }}
+            label {{ display: block; margin-bottom: 5px; font-weight: bold; }}
+            input[type="text"], select {{ width: 100%; padding: 8px; box-sizing: border-box; }}
+            button {{ padding: 10px 20px; background-color: #007bff; color: white; border: none; cursor: pointer; }}
+            button:hover {{ background-color: #0056b3; }}
+            .preview {{ margin-top: 20px; padding: 15px; background: #f8f9fa; border: 1px solid #ddd; }}
+        </style>
+    </head>
+    <body>
+        <h1>Control4 Test Data</h1>
+        <form id="testForm">
+            <div class="form-group">
+                <label>Is Peak:</label>
+                <select id="ispeak">
+                    <option value="true" {"selected" if _test_config.ispeak else ""}>True</option>
+                    <option value="false" {"selected" if not _test_config.ispeak else ""}>False</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Start Time (ISO):</label>
+                <input type="text" id="start" value="{_test_config.start}">
+            </div>
+            <div class="form-group">
+                <label>End Time (ISO):</label>
+                <input type="text" id="end" value="{_test_config.end}">
+            </div>
+            <div class="form-group">
+                <label>State:</label>
+                <input type="text" id="state" value="{_test_config.state}">
+            </div>
+            <button type="button" onclick="updateConfig()">Update Configuration</button>
+        </form>
+
+        <div class="preview">
+            <h3>Current API Response Preview:</h3>
+            <pre id="responsePreview">Loading...</pre>
+        </div>
+
+        <script>
+            async function updateConfig() {{
+                const data = {{
+                    ispeak: document.getElementById('ispeak').value === 'true',
+                    start: document.getElementById('start').value,
+                    end: document.getElementById('end').value,
+                    state: document.getElementById('state').value
+                }};
+
+                await fetch('/api/control4/test/update', {{
+                    method: 'POST',
+                    headers: {{ 'Content-Type': 'application/json' }},
+                    body: JSON.stringify(data)
+                }});
+                
+                checkEndpoint();
+            }}
+
+            async function checkEndpoint() {{
+                const response = await fetch('/api/control4/test');
+                const data = await response.json();
+                document.getElementById('responsePreview').textContent = JSON.stringify(data, null, 2);
+            }}
+
+            // Initial load
+            checkEndpoint();
+        </script>
+    </body>
+    </html>
+    """
+    return html_content
 
 
 @app.get("/api/customers")
